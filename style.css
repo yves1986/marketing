@@ -315,7 +315,9 @@ section:nth-child(odd) {
     font-size: 3.5rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
     margin-bottom: 20px;
 }
 
@@ -402,7 +404,9 @@ section:nth-child(odd) {
     font-weight: 700;
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
     margin-bottom: 10px;
 }
 
@@ -805,7 +809,9 @@ footer::before {
     font-weight: 700;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 .stat-label {
