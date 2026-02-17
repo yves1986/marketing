@@ -1,23 +1,14 @@
-/* ===== VARIABLES - VERT CLAIR ===== */
+/* ===== VARIABLES ===== */
 :root {
     --primary-color: #2ecc71;
-    /* Vert clair vif */
     --primary-dark: #27ae60;
-    /* Vert plus foncé pour les hover */
     --primary-light: #a3e4d7;
-    /* Vert très clair pour les fonds */
     --secondary-color: #f39c12;
-    /* Orange doré pour les accents */
     --accent-color: #3498db;
-    /* Bleu pour certains accents */
     --text-dark: #2c3e50;
-    /* Bleu-gris foncé pour le texte */
     --text-light: #ffffff;
-    /* Blanc */
     --gray-light: #ecf0f1;
-    /* Gris très clair */
     --gray: #bdc3c7;
-    /* Gris moyen */
     --shadow: 0 10px 30px rgba(46, 204, 113, 0.15);
     --shadow-hover: 0 15px 40px rgba(46, 204, 113, 0.25);
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -68,8 +59,9 @@ header .container {
     font-weight: 700;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 .logo span {
@@ -319,6 +311,21 @@ section:nth-child(odd) {
     -webkit-text-fill-color: transparent;
     color: transparent;
     margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .service-card h3 {
@@ -410,10 +417,302 @@ section:nth-child(odd) {
     margin-bottom: 10px;
 }
 
+.property-info .price span {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    background: none;
+    -webkit-text-fill-color: var(--text-dark);
+}
+
 .property-info .description {
     margin-bottom: 20px;
     color: #666;
     font-size: 0.95rem;
+}
+
+/* Bouton de réservation */
+.btn-reservation {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 10px;
+    width: 100%;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-reservation:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+    transform: translateY(-2px);
+}
+
+/* ===== NOUVELLE SECTION APPORTEURS ===== */
+.business-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e9 100%);
+    padding: 80px 0;
+}
+
+.business-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.business-info {
+    background: white;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.business-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.business-info p {
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.stats-mini {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+.stat-mini {
+    text-align: center;
+}
+
+.stat-mini-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.stat-mini-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.business-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.business-btn:hover {
+    background: linear-gradient(135deg, #128C7E, #25D366);
+}
+
+.business-chat {
+    background: white;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.business-chat h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.business-chat h3 i {
+    color: #25D366;
+    font-size: 2rem;
+}
+
+.chat-preview {
+    background: #f5f5f5;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.chat-message {
+    margin-bottom: 10px;
+    padding: 8px;
+    background: white;
+    border-radius: 8px;
+}
+
+.chat-note {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* ===== BOUTON WHATSAPP FLOTTANT ===== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.whatsapp-float i {
+    font-size: 1.8rem;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
+    background: linear-gradient(135deg, #128C7E, #25D366);
+}
+
+/* ===== MODAL DE PAIEMENT ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+.modal-content {
+    background: white;
+    margin: 5% auto;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    max-width: 600px;
+    position: relative;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close-modal {
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #999;
+    transition: var(--transition);
+}
+
+.close-modal:hover {
+    color: var(--primary-color);
+}
+
+.modal-dates {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.modal-price-breakdown {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.total-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.payment-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.payment-option:hover {
+    border-color: var(--primary-color);
+}
+
+.payment-option input[type="radio"] {
+    accent-color: var(--primary-color);
+}
+
+.payment-option img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.payment-note {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.payment-note i {
+    color: var(--primary-color);
+}
+
+.whatsapp-confirmation {
+    text-align: center;
+    padding: 30px;
+    background: #d4edda;
+    border-radius: 8px;
+    color: #155724;
+    font-weight: 600;
 }
 
 /* ===== CONTACT ===== */
@@ -715,7 +1014,8 @@ footer::before {
 
     .services-grid,
     .properties-grid,
-    .contact-content {
+    .contact-content,
+    .business-content {
         grid-template-columns: 1fr;
     }
 
@@ -739,6 +1039,30 @@ footer::before {
         max-width: 300px;
         margin: 20px auto 0;
     }
+
+    .whatsapp-float span {
+        display: none;
+    }
+
+    .whatsapp-float {
+        padding: 15px;
+        border-radius: 50%;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .whatsapp-float i {
+        font-size: 2rem;
+        margin: 0;
+    }
+
+    .modal-dates {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-options {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 480px) {
@@ -756,67 +1080,10 @@ footer::before {
     }
 
     .contact-info,
-    .contact-form {
+    .contact-form,
+    .business-info,
+    .business-chat,
+    .modal-content {
         padding: 25px;
     }
-}
-
-/* ===== ANIMATIONS SUPPLEMENTAIRES ===== */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-.service-card i {
-    animation: pulse 2s infinite;
-}
-
-/* ===== STYLES POUR LES BADGES ===== */
-.tag {
-    display: inline-block;
-    padding: 3px 10px;
-    background: linear-gradient(135deg, var(--primary-light), #e8f5e9);
-    color: var(--primary-dark);
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-right: 5px;
-}
-
-/* ===== STYLES POUR LES STATISTIQUES ===== */
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin: 50px 0;
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
-
-.stat-label {
-    color: var(--text-dark);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }

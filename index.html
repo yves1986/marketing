@@ -28,6 +28,7 @@
                     <li><a href="#residences">Résidences meublées</a></li>
                     <li><a href="#maisons">Maisons</a></li>
                     <li><a href="#terrains">Terrains</a></li>
+                    <li><a href="#business">Apporteurs</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -51,7 +52,7 @@
     <!-- SECTION SERVICES -->
     <section class="services">
         <div class="container">
-            <h2 class="section-title">Nos services</h2>
+            <h2 class="section-title">Nos <span>services</span></h2>
             <div class="services-grid">
                 <div class="service-card">
                     <i class="fas fa-home"></i>
@@ -75,15 +76,19 @@
     <!-- SECTION RÉSIDENCES MEUBLÉES -->
     <section id="residences" class="properties">
         <div class="container">
-            <h2 class="section-title">Résidences meublées</h2>
+            <h2 class="section-title">Résidences <span>meublées</span></h2>
             <div class="properties-grid">
                 <div class="property-card">
                     <img src="images/residence1.jpg" alt="Résidence meublée de luxe">
+                    <div class="property-badge">À la une</div>
                     <div class="property-info">
                         <h3>Villa Océane</h3>
                         <p class="location"><i class="fas fa-map-marker-alt"></i> Cocody, Abidjan</p>
-                        <p class="price">350 000 000 FCFA</p>
+                        <p class="price">350 000 FCFA <span>/nuit</span></p>
                         <p class="description">Villa 5 pièces, piscine, jardin, entièrement meublée</p>
+                        <button class="btn-reservation" onclick="openPaymentModal('Villa Océane', 350000)">
+                            <i class="fas fa-calendar-check"></i> Réserver maintenant
+                        </button>
                         <a href="#" class="btn-small">Voir détails</a>
                     </div>
                 </div>
@@ -92,8 +97,11 @@
                     <div class="property-info">
                         <h3>Résidence les Palmiers</h3>
                         <p class="location"><i class="fas fa-map-marker-alt"></i> Marcory, Abidjan</p>
-                        <p class="price">85 000 000 FCFA</p>
+                        <p class="price">85 000 FCFA <span>/nuit</span></p>
                         <p class="description">Appartement 3 pièces, vue mer, meublé design</p>
+                        <button class="btn-reservation" onclick="openPaymentModal('Résidence les Palmiers', 85000)">
+                            <i class="fas fa-calendar-check"></i> Réserver maintenant
+                        </button>
                         <a href="#" class="btn-small">Voir détails</a>
                     </div>
                 </div>
@@ -102,8 +110,11 @@
                     <div class="property-info">
                         <h3>Les Jardins d'Ébène</h3>
                         <p class="location"><i class="fas fa-map-marker-alt"></i> Plateau, Abidjan</p>
-                        <p class="price">45 000 000 FCFA</p>
+                        <p class="price">45 000 FCFA <span>/nuit</span></p>
                         <p class="description">Studio 2 pièces, centre-ville, meublé haut standing</p>
+                        <button class="btn-reservation" onclick="openPaymentModal('Les Jardins d\'Ébène', 45000)">
+                            <i class="fas fa-calendar-check"></i> Réserver maintenant
+                        </button>
                         <a href="#" class="btn-small">Voir détails</a>
                     </div>
                 </div>
@@ -114,7 +125,7 @@
     <!-- SECTION MAISONS -->
     <section id="maisons" class="properties">
         <div class="container">
-            <h2 class="section-title">Maisons à vendre</h2>
+            <h2 class="section-title">Maisons <span>à vendre</span></h2>
             <div class="properties-grid">
                 <div class="property-card">
                     <img src="images/maison1.jpg" alt="Maison moderne">
@@ -153,7 +164,7 @@
     <!-- SECTION TERRAINS -->
     <section id="terrains" class="properties">
         <div class="container">
-            <h2 class="section-title">Terrains constructibles</h2>
+            <h2 class="section-title">Terrains <span>constructibles</span></h2>
             <div class="properties-grid">
                 <div class="property-card">
                     <img src="images/terrain1.jpg" alt="Terrain constructible">
@@ -189,10 +200,64 @@
         </div>
     </section>
 
+    <!-- ===== NOUVEAU : SECTION APPORTEURS D'AFFAIRES ===== -->
+    <section id="business" class="business-section">
+        <div class="container">
+            <h2 class="section-title">Espace <span>Apporteurs d'Affaires</span></h2>
+            <div class="business-content">
+                <div class="business-info">
+                    <h3>Devenez notre partenaire</h3>
+                    <p>Vous connaissez des personnes cherchant à acheter ou louer ? Devenez apporteur d'affaires et
+                        gagnez des commissions attractives !</p>
+
+                    <div class="stats-mini">
+                        <div class="stat-mini">
+                            <span class="stat-mini-number">5%</span>
+                            <span class="stat-mini-label">Commission</span>
+                        </div>
+                        <div class="stat-mini">
+                            <span class="stat-mini-number">24/7</span>
+                            <span class="stat-mini-label">Support</span>
+                        </div>
+                        <div class="stat-mini">
+                            <span class="stat-mini-number">100+</span>
+                            <span class="stat-mini-label">Partenaires</span>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/2250123456789?text=Bonjour%2C%20je%20souhaite%20devenir%20apporteur%20d'affaires%20chez%20Immobilier%20Prestige"
+                        class="btn business-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Rejoindre l'équipe
+                    </a>
+                </div>
+
+                <div class="business-chat">
+                    <h3><i class="fab fa-whatsapp"></i> Chat Communautaire</h3>
+                    <p>Échangez avec d'autres apporteurs et notre équipe</p>
+                    <div class="chat-preview">
+                        <div class="chat-message">
+                            <strong>Marie K.:</strong> J'ai un client pour la villa Océane !
+                        </div>
+                        <div class="chat-message">
+                            <strong>Support:</strong> Super ! Envoie-nous les détails en privé.
+                        </div>
+                        <div class="chat-message">
+                            <strong>Jean-Paul:</strong> Commission reçue, merci !
+                        </div>
+                    </div>
+                    <a href="https://chat.whatsapp.com/LIEN_DU_GROUPE" class="btn-small" target="_blank">
+                        Rejoindre le groupe WhatsApp
+                    </a>
+                    <p class="chat-note">*Créez un groupe WhatsApp et mettez le lien ici</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SECTION CONTACT -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Contactez-nous</h2>
+            <h2 class="section-title">Contactez-<span>nous</span></h2>
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Nos coordonnées</h3>
@@ -225,6 +290,7 @@
                                 <option value="residence">Résidence meublée</option>
                                 <option value="maison">Achat de maison</option>
                                 <option value="terrain">Achat de terrain</option>
+                                <option value="apporteur">Devenir apporteur</option>
                                 <option value="autre">Autre demande</option>
                             </select>
                         </div>
@@ -254,6 +320,7 @@
                         <li><a href="#residences">Résidences meublées</a></li>
                         <li><a href="#maisons">Maisons</a></li>
                         <li><a href="#terrains">Terrains</a></li>
+                        <li><a href="#business">Apporteurs</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -272,7 +339,199 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- ===== NOUVEAU : BOUTON WHATSAPP FLOTTANT ===== -->
+    <a href="https://wa.me/2250123456789?text=Bonjour%20Immobilier%20Prestige%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20vos%20biens"
+        class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>Discutons</span>
+    </a>
+
+    <!-- ===== NOUVEAU : MODAL DE PAIEMENT ===== -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePaymentModal()">&times;</span>
+            <h2>Réserver <span id="modalPropertyName"></span></h2>
+
+            <form id="paymentForm" onsubmit="handlePaymentSubmit(event)">
+                <div class="modal-dates">
+                    <div class="form-group">
+                        <label>Date d'arrivée</label>
+                        <input type="date" id="checkin" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Date de départ</label>
+                        <input type="date" id="checkout" required>
+                    </div>
+                </div>
+
+                <div class="modal-guests">
+                    <div class="form-group">
+                        <label>Nombre de personnes</label>
+                        <select id="guests">
+                            <option value="1">1 personne</option>
+                            <option value="2">2 personnes</option>
+                            <option value="3">3 personnes</option>
+                            <option value="4">4 personnes</option>
+                            <option value="5">5+ personnes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-price-breakdown">
+                    <h3>Détail du prix</h3>
+                    <p><span id="pricePerNight">0</span> FCFA x <span id="numberOfNights">1</span> nuit(s)</p>
+                    <p class="total-price">Total: <span id="totalPrice">0</span> FCFA</p>
+                </div>
+
+                <div class="modal-payment-methods">
+                    <h3>Choisissez votre moyen de paiement</h3>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="orange" checked>
+                            <img src="https://logo.clearbit.com/orange.ci" alt="Orange Money">
+                            <span>Orange Money</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="mtn">
+                            <img src="https://logo.clearbit.com/mtn.com" alt="MTN Money">
+                            <span>MTN Money</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="wave">
+                            <img src="https://logo.clearbit.com/wave.com" alt="Wave">
+                            <span>Wave</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="card">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Carte bancaire</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; margin-top: 20px;">
+                    <i class="fas fa-lock"></i> Payer maintenant
+                </button>
+
+                <p class="payment-note">
+                    <i class="fas fa-shield-alt"></i> Paiement sécurisé. Vous recevrez une confirmation par WhatsApp.
+                </p>
+            </form>
+
+            <div class="whatsapp-confirmation" id="whatsappConfirmation" style="display: none;">
+                <p>✅ Demande envoyée ! Vous allez être redirigé vers WhatsApp pour confirmer.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript -->
+    <script>
+        // Menu mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav ul');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+        }
+
+        // Smooth scroll pour les liens
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation au scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(255,255,255,0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                header.style.backgroundColor = '#fff';
+                header.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // ===== MODAL DE PAIEMENT =====
+        function openPaymentModal(propertyName, pricePerNight) {
+            document.getElementById('modalPropertyName').textContent = propertyName;
+            document.getElementById('pricePerNight').textContent = pricePerNight;
+            document.getElementById('paymentModal').style.display = 'block';
+            calculateTotal();
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+            document.getElementById('paymentForm').style.display = 'block';
+            document.getElementById('whatsappConfirmation').style.display = 'none';
+        }
+
+        // Calcul automatique du prix total
+        document.getElementById('checkin')?.addEventListener('change', calculateTotal);
+        document.getElementById('checkout')?.addEventListener('change', calculateTotal);
+
+        function calculateTotal() {
+            const checkin = document.getElementById('checkin')?.value;
+            const checkout = document.getElementById('checkout')?.value;
+            const pricePerNight = parseInt(document.getElementById('pricePerNight')?.textContent || '0');
+
+            if (checkin && checkout && checkout > checkin) {
+                const nights = Math.ceil((new Date(checkout) - new Date(checkin)) / (1000 * 60 * 60 * 24));
+                document.getElementById('numberOfNights').textContent = nights;
+                document.getElementById('totalPrice').textContent = nights * pricePerNight;
+            }
+        }
+
+        // Soumission du formulaire
+        function handlePaymentSubmit(event) {
+            event.preventDefault();
+
+            const propertyName = document.getElementById('modalPropertyName').textContent;
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const guests = document.getElementById('guests').value;
+            const totalPrice = document.getElementById('totalPrice').textContent;
+            const paymentMethod = document.querySelector('input[name="payment"]:checked')?.value || 'orange';
+
+            // Message WhatsApp
+            const message = `*NOUVELLE RÉSERVATION*
+            
+🏠 *Propriété:* ${propertyName}
+📅 *Arrivée:* ${checkin}
+📅 *Départ:* ${checkout}
+👥 *Personnes:* ${guests}
+💰 *Total:* ${totalPrice} FCFA
+💳 *Paiement:* ${paymentMethod.toUpperCase()}`;
+
+            // Redirection WhatsApp
+            window.open(`https://wa.me/2250123456789?text=${encodeURIComponent(message)}`, '_blank');
+
+            // Afficher confirmation
+            document.getElementById('paymentForm').style.display = 'none';
+            document.getElementById('whatsappConfirmation').style.display = 'block';
+
+            // Fermer après 3 secondes
+            setTimeout(closePaymentModal, 3000);
+        }
+
+        // Fermer le modal en cliquant dehors
+        window.onclick = function (event) {
+            const modal = document.getElementById('paymentModal');
+            if (event.target == modal) {
+                closePaymentModal();
+            }
+        }
+    </script>
 </body>
 
 </html>
