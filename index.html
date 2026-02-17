@@ -1,16 +1,278 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marketing Site</title>
+    <meta name="description"
+        content="Agence immobilière spécialisée dans la résidence meublée, vente de maisons et de terrains. Trouvez votre bien idéal.">
+    <title>Immobilier Prestige - Résidences meublées, Maisons & Terrains</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
-    <h1>Bienvenue sur mon site marketing</h1>
-    <p>Ce site est en construction. merci pour votre patience.go</p>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Immobilier<span>Prestige</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#residences">Résidences meublées</a></li>
+                    <li><a href="#maisons">Maisons</a></li>
+                    <li><a href="#terrains">Terrains</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION HERO -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Votre rêve immobilier commence ici</h2>
+                <p>Résidences meublées de luxe, maisons de caractère et terrains constructibles</p>
+                <a href="#contact" class="btn">Nous contacter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION SERVICES -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Nos services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Résidences meublées</h3>
+                    <p>Appartements et villas entièrement équipés, prêts à habiter</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-building"></i>
+                    <h3>Vente de maisons</h3>
+                    <p>Maisons individuelles, villas contemporaines et propriétés de charme</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Terrains</h3>
+                    <p>Terrains constructibles pour réaliser votre projet sur mesure</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION RÉSIDENCES MEUBLÉES -->
+    <section id="residences" class="properties">
+        <div class="container">
+            <h2 class="section-title">Résidences meublées</h2>
+            <div class="properties-grid">
+                <div class="property-card">
+                    <img src="images/residence1.jpg" alt="Résidence meublée de luxe">
+                    <div class="property-info">
+                        <h3>Villa Océane</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Cocody, Abidjan</p>
+                        <p class="price">350 000 000 FCFA</p>
+                        <p class="description">Villa 5 pièces, piscine, jardin, entièrement meublée</p>
+                        <a href="#" class="btn-small">Voir détails</a>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <img src="images/residence2.jpg" alt="Appartement meublé">
+                    <div class="property-info">
+                        <h3>Résidence les Palmiers</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Marcory, Abidjan</p>
+                        <p class="price">85 000 000 FCFA</p>
+                        <p class="description">Appartement 3 pièces, vue mer, meublé design</p>
+                        <a href="#" class="btn-small">Voir détails</a>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <img src="images/residence3.jpg" alt="Studio meublé">
+                    <div class="property-info">
+                        <h3>Les Jardins d'Ébène</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Plateau, Abidjan</p>
+                        <p class="price">45 000 000 FCFA</p>
+                        <p class="description">Studio 2 pièces, centre-ville, meublé haut standing</p>
+                        <a href="#" class="btn-small">Voir détails</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION MAISONS -->
+    <section id="maisons" class="properties">
+        <div class="container">
+            <h2 class="section-title">Maisons à vendre</h2>
+            <div class="properties-grid">
+                <div class="property-card">
+                    <img src="images/maison1.jpg" alt="Maison moderne">
+                    <div class="property-info">
+                        <h3>Villa Souveraine</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Bingerville</p>
+                        <p class="price">120 000 000 FCFA</p>
+                        <p class="description">Villa 4 pièces, grand terrain 500m², piscine</p>
+                        <a href="#" class="btn-small">Voir détails</a>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <img src="images/maison2.jpg" alt="Maison traditionnelle">
+                    <div class="property-info">
+                        <h3>Villa des Ambassadeurs</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Angré, Abidjan</p>
+                        <p class="price">95 000 000 FCFA</p>
+                        <p class="description">Maison 5 pièces, garage, jardin paysager</p>
+                        <a href="#" class="btn-small">Voir détails</a>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <img src="images/maison3.jpg" alt="Maison contemporaine">
+                    <div class="property-info">
+                        <h3>Résidence Belle Vue</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Grand-Bassam</p>
+                        <p class="price">210 000 000 FCFA</p>
+                        <p class="description">Villa 6 pièces, vue mer, piscine, 3 chambres</p>
+                        <a href="#" class="btn-small">Voir détails</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION TERRAINS -->
+    <section id="terrains" class="properties">
+        <div class="container">
+            <h2 class="section-title">Terrains constructibles</h2>
+            <div class="properties-grid">
+                <div class="property-card">
+                    <img src="images/terrain1.jpg" alt="Terrain constructible">
+                    <div class="property-info">
+                        <h3>Lotissement les Hibiscus</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Bingerville</p>
+                        <p class="price">25 000 000 FCFA</p>
+                        <p class="description">Terrain 300m², viabilisé, zone résidentielle</p>
+                        <a href="#" class="btn-small">Voir détails</a>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <img src="images/terrain2.jpg" alt="Terrain viabilisé">
+                    <div class="property-info">
+                        <h3>Domaine de la Paix</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Jacqueville</p>
+                        <p class="price">35 000 000 FCFA</p>
+                        <p class="description">Terrain 500m², vue lagune, accès facile</p>
+                        <a href="#" class="btn-small">Voir détails</a>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <img src="images/terrain3.jpg" alt="Terrain résidentiel">
+                    <div class="property-info">
+                        <h3>Parcelle Azur</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Anyama</p>
+                        <p class="price">18 000 000 FCFA</p>
+                        <p class="description">Terrain 400m², borné, prêt à construire</p>
+                        <a href="#" class="btn-small">Voir détails</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION CONTACT -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contactez-nous</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Nos coordonnées</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Rue des Immeubles, Cocody, Abidjan</p>
+                    <p><i class="fas fa-phone"></i> +225 01 23 45 67 89</p>
+                    <p><i class="fas fa-envelope"></i> contact@immobilier-prestige.ci</p>
+                    <p><i class="fas fa-clock"></i> Lun-Ven: 8h-18h | Sam: 9h-13h</p>
+
+                    <div class="social-media">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <input type="text" name="nom" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Votre email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="telephone" placeholder="Votre téléphone">
+                        </div>
+                        <div class="form-group">
+                            <select name="sujet">
+                                <option value="">Choisissez un sujet</option>
+                                <option value="residence">Résidence meublée</option>
+                                <option value="maison">Achat de maison</option>
+                                <option value="terrain">Achat de terrain</option>
+                                <option value="autre">Autre demande</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Votre message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Immobilier Prestige</h3>
+                    <p>Votre partenaire de confiance pour l'achat de résidences meublées, maisons et terrains en Côte
+                        d'Ivoire.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#residences">Résidences meublées</a></li>
+                        <li><a href="#maisons">Maisons</a></li>
+                        <li><a href="#terrains">Terrains</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Recevez nos dernières offres</p>
+                    <form action="#">
+                        <input type="email" placeholder="Votre email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Immobilier Prestige. Tous droits réservés. | Conçu par GNENESSEMIN DJEAMIN YVES</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
