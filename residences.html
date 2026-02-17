@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Découvrez nos résidences meublées de luxe à Abidjan et en Côte d'Ivoire. Appartements et villas entièrement équipés, prêts à habiter.">
+    <title>Résidences meublées - Immobilier Prestige</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Immobilier<span>Prestige</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="residences.html">Résidences meublées</a></li>
+                    <li><a href="maisons.html">Maisons</a></li>
+                    <li><a href="terrains.html">Terrains</a></li>
+                    <li><a href="apporteurs.html">Apporteurs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- PAGE HEADER -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Résidences <span>meublées</span></h1>
+                <p>Découvrez nos appartements et villas entièrement équipés, prêts à habiter</p>
+            </div>
+        </section>
+
+        <!-- SECTION RÉSIDENCES -->
+        <section class="properties">
+            <div class="container">
+                <div class="properties-grid">
+                    <!-- Villa Océane -->
+                    <div class="property-card">
+                        <img src="images/residence1.jpg" alt="Villa Océane">
+                        <div class="property-badge">À la une</div>
+                        <div class="property-info">
+                            <h3>Villa Océane</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Cocody, Abidjan</p>
+                            <p class="price">350 000 FCFA <span>/nuit</span></p>
+                            <p class="description">Villa 5 pièces, piscine, jardin, entièrement meublée</p>
+                            <button class="btn-reservation" onclick="openPaymentModal('Villa Océane', 350000)">
+                                <i class="fas fa-calendar-check"></i> Réserver maintenant
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Résidence les Palmiers -->
+                    <div class="property-card">
+                        <img src="images/residence2.jpg" alt="Résidence les Palmiers">
+                        <div class="property-info">
+                            <h3>Résidence les Palmiers</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Marcory, Abidjan</p>
+                            <p class="price">85 000 FCFA <span>/nuit</span></p>
+                            <p class="description">Appartement 3 pièces, vue mer, meublé design</p>
+                            <button class="btn-reservation" onclick="openPaymentModal('Résidence les Palmiers', 85000)">
+                                <i class="fas fa-calendar-check"></i> Réserver maintenant
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Les Jardins d'Ébène -->
+                    <div class="property-card">
+                        <img src="images/residence3.jpg" alt="Les Jardins d'Ébène">
+                        <div class="property-info">
+                            <h3>Les Jardins d'Ébène</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Plateau, Abidjan</p>
+                            <p class="price">45 000 FCFA <span>/nuit</span></p>
+                            <p class="description">Studio 2 pièces, centre-ville, meublé haut standing</p>
+                            <button class="btn-reservation" onclick="openPaymentModal('Les Jardins d\'Ébène', 45000)">
+                                <i class="fas fa-calendar-check"></i> Réserver maintenant
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Ajoutez d'autres résidences ici -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Immobilier Prestige</h3>
+                    <p>Votre partenaire de confiance pour l'achat de résidences meublées, maisons et terrains en Côte
+                        d'Ivoire.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="residences.html">Résidences meublées</a></li>
+                        <li><a href="maisons.html">Maisons</a></li>
+                        <li><a href="terrains.html">Terrains</a></li>
+                        <li><a href="apporteurs.html">Apporteurs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Recevez nos dernières offres</p>
+                    <form action="#">
+                        <input type="email" placeholder="Votre email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Immobilier Prestige. Tous droits réservés. | Conçu par GNENESSEMIN DJEAMIN YVES</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOUTON WHATSAPP FLOTTANT -->
+    <a href="https://wa.me/2250123456789?text=Bonjour%20Immobilier%20Prestige" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>Discutons</span>
+    </a>
+
+    <!-- MODAL DE PAIEMENT -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePaymentModal()">&times;</span>
+            <h2>Réserver <span id="modalPropertyName"></span></h2>
+
+            <form id="paymentForm" onsubmit="handlePaymentSubmit(event)">
+                <div class="modal-dates">
+                    <div class="form-group">
+                        <label>Date d'arrivée</label>
+                        <input type="date" id="checkin" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Date de départ</label>
+                        <input type="date" id="checkout" required>
+                    </div>
+                </div>
+
+                <div class="modal-guests">
+                    <div class="form-group">
+                        <label>Nombre de personnes</label>
+                        <select id="guests">
+                            <option value="1">1 personne</option>
+                            <option value="2">2 personnes</option>
+                            <option value="3">3 personnes</option>
+                            <option value="4">4 personnes</option>
+                            <option value="5">5+ personnes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-price-breakdown">
+                    <h3>Détail du prix</h3>
+                    <p><span id="pricePerNight">0</span> FCFA x <span id="numberOfNights">1</span> nuit(s)</p>
+                    <p class="total-price">Total: <span id="totalPrice">0</span> FCFA</p>
+                </div>
+
+                <div class="modal-payment-methods">
+                    <h3>Choisissez votre moyen de paiement</h3>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="orange" checked>
+                            <img src="https://logo.clearbit.com/orange.ci" alt="Orange Money">
+                            <span>Orange Money</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="mtn">
+                            <img src="https://logo.clearbit.com/mtn.com" alt="MTN Money">
+                            <span>MTN Money</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="wave">
+                            <img src="https://logo.clearbit.com/wave.com" alt="Wave">
+                            <span>Wave</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="card">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Carte bancaire</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; margin-top: 20px;">
+                    <i class="fas fa-lock"></i> Payer maintenant
+                </button>
+
+                <p class="payment-note">
+                    <i class="fas fa-shield-alt"></i> Paiement sécurisé. Vous recevrez une confirmation par WhatsApp.
+                </p>
+            </form>
+
+            <div class="whatsapp-confirmation" id="whatsappConfirmation" style="display: none;">
+                <p>✅ Demande envoyée ! Vous allez être redirigé vers WhatsApp pour confirmer.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
