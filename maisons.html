@@ -58,6 +58,9 @@
                             <p class="price">120 000 000 FCFA</p>
                             <p class="description">Villa 4 pièces, grand terrain 500m², piscine</p>
                             <a href="contact.html" class="btn-small">Nous contacter</a>
+                            <a href="maison-detail.html?nom=villa-souveraine" class="btn-photos">
+                                <i class="fas fa-images"></i> Voir plus de photos
+                            </a>
                         </div>
                     </div>
 
@@ -70,6 +73,9 @@
                             <p class="price">95 000 000 FCFA</p>
                             <p class="description">Maison 5 pièces, garage, jardin paysager</p>
                             <a href="contact.html" class="btn-small">Nous contacter</a>
+                            <a href="maison-detail.html?nom=villa-ambassadeurs" class="btn-photos">
+                                <i class="fas fa-images"></i> Voir plus de photos
+                            </a>
                         </div>
                     </div>
 
@@ -82,6 +88,9 @@
                             <p class="price">210 000 000 FCFA</p>
                             <p class="description">Villa 6 pièces, vue mer, piscine, 3 chambres</p>
                             <a href="contact.html" class="btn-small">Nous contacter</a>
+                            <a href="maison-detail.html?nom=residence-bellevue" class="btn-photos">
+                                <i class="fas fa-images"></i> Voir plus de photos
+                            </a>
                         </div>
                     </div>
 
@@ -94,6 +103,9 @@
                             <p class="price">150 000 000 FCFA</p>
                             <p class="description">Villa 5 pièces, 400m², piscine, jardin</p>
                             <a href="contact.html" class="btn-small">Nous contacter</a>
+                            <a href="maison-detail.html?nom=villa-eden" class="btn-photos">
+                                <i class="fas fa-images"></i> Voir plus de photos
+                            </a>
                         </div>
                     </div>
 
@@ -106,6 +118,9 @@
                             <p class="price">85 000 000 FCFA</p>
                             <p class="description">Maison 4 pièces, 300m², garage</p>
                             <a href="contact.html" class="btn-small">Nous contacter</a>
+                            <a href="maison-detail.html?nom=maison-palmiers" class="btn-photos">
+                                <i class="fas fa-images"></i> Voir plus de photos
+                            </a>
                         </div>
                     </div>
 
@@ -118,6 +133,9 @@
                             <p class="price">200 000 000 FCFA</p>
                             <p class="description">Villa 6 pièces, 500m², vue lagune</p>
                             <a href="contact.html" class="btn-small">Nous contacter</a>
+                            <a href="maison-detail.html?nom=villa-bellerive" class="btn-photos">
+                                <i class="fas fa-images"></i> Voir plus de photos
+                            </a>
                         </div>
                     </div>
 
@@ -130,6 +148,9 @@
                             <p class="price">120 000 000 FCFA</p>
                             <p class="description">Maison 4 pièces, accès plage</p>
                             <a href="contact.html" class="btn-small">Nous contacter</a>
+                            <a href="maison-detail.html?nom=residence-lac" class="btn-photos">
+                                <i class="fas fa-images"></i> Voir plus de photos
+                            </a>
                         </div>
                     </div>
 
@@ -142,6 +163,9 @@
                             <p class="price">175 000 000 FCFA</p>
                             <p class="description">Villa 5 pièces, piscine, terrain 600m²</p>
                             <a href="contact.html" class="btn-small">Nous contacter</a>
+                            <a href="maison-detail.html?nom=villa-azur" class="btn-photos">
+                                <i class="fas fa-images"></i> Voir plus de photos
+                            </a>
                         </div>
                     </div>
 
@@ -154,6 +178,9 @@
                             <p class="price">65 000 000 FCFA</p>
                             <p class="description">Maison 3 pièces, grand jardin</p>
                             <a href="contact.html" class="btn-small">Nous contacter</a>
+                            <a href="maison-detail.html?nom=maison-tropicana" class="btn-photos">
+                                <i class="fas fa-images"></i> Voir plus de photos
+                            </a>
                         </div>
                     </div>
 
@@ -166,6 +193,9 @@
                             <p class="price">300 000 000 FCFA</p>
                             <p class="description">Villa 7 pièces, piscine, spa, jardin paysager</p>
                             <a href="contact.html" class="btn-small">Nous contacter</a>
+                            <a href="maison-detail.html?nom=villa-imperiale" class="btn-photos">
+                                <i class="fas fa-images"></i> Voir plus de photos
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -218,6 +248,54 @@
         <i class="fab fa-whatsapp"></i>
         <span>Discutons</span>
     </a>
+
+    <!-- MODAL DE PAIEMENT -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePaymentModal()">&times;</span>
+            <h2>Acheter <span id="modalPropertyName"></span></h2>
+            <form id="paymentForm" onsubmit="handlePaymentSubmit(event)">
+                <div class="modal-payment-methods">
+                    <h3>Choisissez votre moyen de paiement</h3>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="orange" checked>
+                            <img src="images/logo-orange.png" alt="Orange Money">
+                            <span>Orange Money</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="mtn">
+                            <img src="images/logo-mtn.png" alt="MTN Money">
+                            <span>MTN Money</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="wave">
+                            <img src="images/logo-wave.jpeg" alt="Wave">
+                            <span>Wave</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="card">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Carte bancaire</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Votre message (optionnel)</label>
+                    <textarea id="message" rows="3" placeholder="Informations complémentaires..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 20px;">
+                    <i class="fab fa-whatsapp"></i> Envoyer la demande
+                </button>
+                <p class="payment-note">
+                    <i class="fas fa-shield-alt"></i> Vous serez contacté sous 24h pour finaliser l'achat.
+                </p>
+            </form>
+            <div class="whatsapp-confirmation" id="whatsappConfirmation" style="display: none;">
+                <p>✅ Demande envoyée ! Vous allez être redirigé vers WhatsApp.</p>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
