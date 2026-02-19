@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Détails et photos du terrain">
+    <title>Détail terrain - Azania Immobilier</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Azania<span>Immobilier</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="residences.html">Résidences meublées</a></li>
+                    <li><a href="maisons.html">Maisons</a></li>
+                    <li><a href="terrains.html">Terrains</a></li>
+                    <li><a href="apporteurs.html">Apporteurs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="detail-section">
+            <div class="container">
+                <!-- Les données seront chargées dynamiquement avec JavaScript -->
+                <div id="property-detail">
+                    <!-- Le contenu sera injecté ici -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Azania Immobilier</h3>
+                    <p>Votre partenaire de confiance pour l'achat de résidences meublées, maisons et terrains en Côte
+                        d'Ivoire.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="residences.html">Résidences meublées</a></li>
+                        <li><a href="maisons.html">Maisons</a></li>
+                        <li><a href="terrains.html">Terrains</a></li>
+                        <li><a href="apporteurs.html">Apporteurs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Recevez nos dernières offres</p>
+                    <form action="#">
+                        <input type="email" placeholder="Votre email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Azania Immobilier. Tous droits réservés. | Conçu par GNENESSEMIN DJEAMIN YVES</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOUTON WHATSAPP FLOTTANT -->
+    <a href="https://wa.me/2250710076550?text=Bonjour%20%2C%20je%20souhaite%20obtenir%20des%20informations%20sur%20vos%20biens%20immobiliers%20en%20C%C3%B4te%20d%27Ivoire."
+        class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>Discutons</span>
+    </a>
+
+    <!-- MODAL DE PAIEMENT (pour demande d'achat) -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePaymentModal()">&times;</span>
+            <h2>Acheter <span id="modalPropertyName"></span></h2>
+
+            <form id="paymentForm" onsubmit="handlePaymentSubmit(event)">
+                <div class="modal-payment-methods">
+                    <h3>Choisissez votre moyen de paiement</h3>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="orange" checked>
+                            <img src="images/logo-orange.png" alt="Orange Money">
+                            <span>Orange Money</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="mtn">
+                            <img src="images/logo-mtn.png" alt="MTN Money">
+                            <span>MTN Money</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="wave">
+                            <img src="images/logo-wave.jpeg" alt="Wave">
+                            <span>Wave</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="card">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Carte bancaire</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Votre message (optionnel)</label>
+                    <textarea id="message" rows="3" placeholder="Informations complémentaires..."></textarea>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; margin-top: 20px;">
+                    <i class="fab fa-whatsapp"></i> Envoyer la demande
+                </button>
+
+                <p class="payment-note">
+                    <i class="fas fa-shield-alt"></i> Vous serez contacté sous 24h pour finaliser l'achat.
+                </p>
+            </form>
+
+            <div class="whatsapp-confirmation" id="whatsappConfirmation" style="display: none;">
+                <p>✅ Demande envoyée ! Vous allez être redirigé vers WhatsApp.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Base de données des terrains
+        const properties = {
+            'lotissement-hibiscus': {
+                type: 'terrain',
+                nom: 'Lotissement les Hibiscus',
+                location: 'Bingerville',
+                prix: '25 000 000 FCFA',
+                prixChiffre: 25000000,
+                description: 'Terrain 300m², viabilisé, zone résidentielle',
+                longDescription: `Magnifique terrain dans un lotissement résidentiel calme à Bingerville.
+                Il est viabilisé (eau, électricité) et borné. Idéal pour construire votre villa.
+                Proche des écoles et des commerces.`,
+                superficie: '300 m²',
+                viabilise: 'Oui',
+                borne: 'Oui',
+                zone: 'Résidentielle',
+                documents: 'Titre foncier disponible',
+                images: [
+                    'images/terrains/hibiscus/main.jpg',
+                    'images/terrains/hibiscus/vue1.jpg',
+                    'images/terrains/hibiscus/vue2.jpg',
+                    'images/terrains/hibiscus/vue3.jpg',
+                    'images/terrains/hibiscus/borne.jpg',
+                    'images/terrains/hibiscus/environnement.jpg',
+                    'images/terrains/hibiscus/quartier.jpg',
+                    'images/terrains/hibiscus/voie.jpg'
+                ]
+            },
+            'domaine-paix': {
+                type: 'terrain',
+                nom: 'Domaine de la Paix',
+                location: 'Jacqueville',
+                prix: '35 000 000 FCFA',
+                prixChiffre: 35000000,
+                description: 'Terrain 500m², vue lagune, accès facile',
+                longDescription: `Superbe terrain avec vue imprenable sur la lagune à Jacqueville.
+                Accès facile par route bitumée. Idéal pour construction de résidence secondaire.
+                Terrain plat et constructible.`,
+                superficie: '500 m²',
+                viabilise: 'En partie',
+                borne: 'Oui',
+                zone: 'Touristique',
+                documents: 'Attestation villageoise',
+                images: [
+                    'images/terrains/paix/main.jpg',
+                    'images/terrains/paix/vue1.jpg',
+                    'images/terrains/paix/vue2.jpg',
+                    'images/terrains/paix/vue3.jpg',
+                    'images/terrains/paix/lagune.jpg',
+                    'images/terrains/paix/voie.jpg',
+                    'images/terrains/paix/environnement.jpg'
+                ]
+            },
+            'parcelle-azur': {
+                type: 'terrain',
+                nom: 'Parcelle Azur',
+                location: 'Anyama',
+                prix: '18 000 000 FCFA',
+                prixChiffre: 18000000,
+                description: 'Terrain 400m², borné, prêt à construire',
+                longDescription: `Terrain économique à Anyama, parfait pour premier achat immobilier.
+                Borné et prêt à construire. Zone en développement avec potentiel de plus-value.
+                Proche des axes principaux.`,
+                superficie: '400 m²',
+                viabilise: 'Non',
+                borne: 'Oui',
+                zone: 'Mixte',
+                documents: 'Certificat de propriété',
+                images: [
+                    'images/terrains/azur/main.jpg',
+                    'images/terrains/azur/vue1.jpg',
+                    'images/terrains/azur/vue2.jpg',
+                    'images/terrains/azur/borne.jpg',
+                    'images/terrains/azur/voie.jpg'
+                ]
+            },
+            'terrain-eden': {
+                type: 'terrain',
+                nom: 'Terrain Eden Park',
+                location: 'Bingerville',
+                prix: '28 000 000 FCFA',
+                prixChiffre: 28000000,
+                description: 'Terrain 350m², viabilisé, vue dégagée',
+                longDescription: `Joli terrain avec vue dégagée dans un quartier résidentiel de Bingerville.
+                Viabilisé (eau, électricité) et borné. Idéal pour construction de villa moderne.
+                Environnement calme et arboré.`,
+                superficie: '350 m²',
+                viabilise: 'Oui',
+                borne: 'Oui',
+                zone: 'Résidentielle',
+                documents: 'Titre foncier',
+                images: [
+                    'images/terrains/eden/main.jpg',
+                    'images/terrains/eden/vue1.jpg',
+                    'images/terrains/eden/vue2.jpg',
+                    'images/terrains/eden/vue3.jpg',
+                    'images/terrains/eden/borne.jpg',
+                    'images/terrains/eden/quartier.jpg'
+                ]
+            },
+            'parcelle-azura': {
+                type: 'terrain',
+                nom: 'Parcelle Azura',
+                location: 'Jacqueville',
+                prix: '42 000 000 FCFA',
+                prixChiffre: 42000000,
+                description: 'Terrain 600m², bord de lagune',
+                longDescription: `Exceptionnel terrain en bordure de lagune à Jacqueville.
+                Vue imprenable, accès direct à l'eau. Idéal pour construction de villa avec ponton.
+                Zone très prisée pour les résidences secondaires.`,
+                superficie: '600 m²',
+                viabilise: 'Non',
+                borne: 'Oui',
+                zone: 'Touristique',
+                documents: 'Attestation',
+                images: [
+                    'images/terrains/azura/main.jpg',
+                    'images/terrains/azura/vue1.jpg',
+                    'images/terrains/azura/vue2.jpg',
+                    'images/terrains/azura/vue3.jpg',
+                    'images/terrains/azura/lagune.jpg',
+                    'images/terrains/azura/accueil.jpg'
+                ]
+            },
+            'domaine-vert': {
+                type: 'terrain',
+                nom: 'Domaine Vert',
+                location: 'Anyama',
+                prix: '22 000 000 FCFA',
+                prixChiffre: 22000000,
+                description: 'Terrain 400m², arboré, calme',
+                longDescription: `Terrain arboré dans un cadre calme et verdoyant à Anyama.
+                Idéal pour ceux qui recherchent la tranquillité. Grands arbres préservés.
+                Zone résidentielle calme.`,
+                superficie: '400 m²',
+                viabilise: 'Non',
+                borne: 'Oui',
+                zone: 'Résidentielle',
+                documents: 'Certificat',
+                images: [
+                    'images/terrains/vert/main.jpg',
+                    'images/terrains/vert/vue1.jpg',
+                    'images/terrains/vert/vue2.jpg',
+                    'images/terrains/vert/arbres.jpg',
+                    'images/terrains/vert/calme.jpg'
+                ]
+            },
+            'terrain-ocean': {
+                type: 'terrain',
+                nom: 'Terrain Océan',
+                location: 'Grand-Bassam',
+                prix: '55 000 000 FCFA',
+                prixChiffre: 55000000,
+                description: 'Terrain 800m², vue mer, constructible',
+                longDescription: `Rare terrain avec vue mer à Grand-Bassam.
+                Grande superficie de 800m², constructible. Proximité immédiate de la plage.
+                Idéal pour projet hôtelier ou villa de luxe.`,
+                superficie: '800 m²',
+                viabilise: 'Non',
+                borne: 'Oui',
+                zone: 'Touristique',
+                documents: 'Titre foncier',
+                images: [
+                    'images/terrains/ocean/main.jpg',
+                    'images/terrains/ocean/vue1.jpg',
+                    'images/terrains/ocean/vue2.jpg',
+                    'images/terrains/ocean/vue3.jpg',
+                    'images/terrains/ocean/plage.jpg',
+                    'images/terrains/ocean/mer.jpg'
+                ]
+            },
+            'parcelle-arts': {
+                type: 'terrain',
+                nom: 'Parcelle des Arts',
+                location: 'Bingerville',
+                prix: '32 000 000 FCFA',
+                prixChiffre: 32000000,
+                description: 'Terrain 450m², borné, école à proximité',
+                longDescription: `Terrain bien situé à Bingerville, proche des écoles et commerces.
+                Borné et prêt à construire. Idéal pour famille avec enfants.
+                Quartier résidentiel en développement.`,
+                superficie: '450 m²',
+                viabilise: 'En partie',
+                borne: 'Oui',
+                zone: 'Résidentielle',
+                documents: 'Titre foncier',
+                images: [
+                    'images/terrains/arts/main.jpg',
+                    'images/terrains/arts/vue1.jpg',
+                    'images/terrains/arts/vue2.jpg',
+                    'images/terrains/arts/borne.jpg',
+                    'images/terrains/arts/ecole.jpg',
+                    'images/terrains/arts/quartier.jpg'
+                ]
+            },
+            'terrain-harmonie': {
+                type: 'terrain',
+                nom: 'Terrain Harmonie',
+                location: 'Jacqueville',
+                prix: '38 000 000 FCFA',
+                prixChiffre: 38000000,
+                description: 'Terrain 500m², viabilisé, vue imprenable',
+                longDescription: `Superbe terrain avec vue imprenable sur la lagune.
+                Viabilisé (eau, électricité), borné. Idéal pour construction de villa de standing.
+                Environnement calme et préservé.`,
+                superficie: '500 m²',
+                viabilise: 'Oui',
+                borne: 'Oui',
+                zone: 'Touristique',
+                documents: 'Titre foncier',
+                images: [
+                    'images/terrains/harmonie/main.jpg',
+                    'images/terrains/harmonie/vue1.jpg',
+                    'images/terrains/harmonie/vue2.jpg',
+                    'images/terrains/harmonie/vue3.jpg',
+                    'images/terrains/harmonie/lagune.jpg',
+                    'images/terrains/harmonie/viabilisation.jpg'
+                ]
+            },
+            'parcelle-souveraine': {
+                type: 'terrain',
+                nom: 'Parcelle Souveraine',
+                location: 'Bingerville',
+                prix: '48 000 000 FCFA',
+                prixChiffre: 48000000,
+                description: 'Terrain 700m², zone résidentielle haut standing',
+                longDescription: `Grand terrain de 700m² dans une zone résidentielle haut de gamme.
+                Viabilisé, borné. Idéal pour construction de villa de luxe.
+                Quartier calme et sécurisé.`,
+                superficie: '700 m²',
+                viabilise: 'Oui',
+                borne: 'Oui',
+                zone: 'Haut standing',
+                documents: 'Titre foncier',
+                images: [
+                    'images/terrains/souveraine/main.jpg',
+                    'images/terrains/souveraine/vue1.jpg',
+                    'images/terrains/souveraine/vue2.jpg',
+                    'images/terrains/souveraine/vue3.jpg',
+                    'images/terrains/souveraine/quartier.jpg',
+                    'images/terrains/souveraine/borne.jpg'
+                ]
+            }
+        };
+
+        // Récupérer le nom depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const propertyName = urlParams.get('nom');
+
+        if (propertyName && properties[propertyName]) {
+            const prop = properties[propertyName];
+
+            let html = `
+                <div class="detail-header">
+                    <h1>${prop.nom}</h1>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> ${prop.location}</p>
+                </div>
+
+                <div class="detail-gallery">
+                    <img src="${prop.images[0]}" alt="${prop.nom}" class="main-image" id="mainImage" onerror="this.src='images/placeholder.jpg'">
+                    <div class="thumbnail-grid">
+            `;
+
+            // Ajouter les miniatures
+            for (let i = 1; i < prop.images.length; i++) {
+                html += `<img src="${prop.images[i]}" alt="${prop.nom}" class="thumbnail" onclick="document.getElementById('mainImage').src=this.src" onerror="this.src='images/placeholder.jpg'">`;
+            }
+
+            html += `
+                    </div>
+                </div>
+
+                <div class="detail-info">
+                    <div class="description-box">
+                        <h2>Description</h2>
+                        <p>${prop.longDescription}</p>
+                        
+                        <h2 style="margin-top: 30px;">Caractéristiques</h2>
+                        <ul class="features-list">
+                            <li><i class="fas fa-ruler-combined"></i> Superficie: ${prop.superficie}</li>
+                            <li><i class="fas fa-tint"></i> Viabilisé: ${prop.viabilise}</li>
+                            <li><i class="fas fa-border-style"></i> Borné: ${prop.borne}</li>
+                            <li><i class="fas fa-map-pin"></i> Zone: ${prop.zone}</li>
+                            <li><i class="fas fa-file-contract"></i> Documents: ${prop.documents}</li>
+                        </ul>
+                    </div>
+
+                    <div class="price-box">
+                        <div class="price">${prop.prix}</div>
+                        <button class="btn" onclick="openPaymentModal('${prop.nom}', ${prop.prixChiffre})">
+                            <i class="fas fa-shopping-cart"></i> Acheter
+                        </button>
+                        <a href="https://wa.me/2250710076550?text=Bonjour%2C%20je%20souhaite%20plus%20d%27informations%20sur%20${encodeURIComponent(prop.nom)}"
+                            class="btn" style="background: #25D366; margin-top: 10px;" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Demande d'info
+                        </a>
+                    </div>
+                </div>
+
+                <div class="amenities-grid">
+                    <div class="amenity-card">
+                        <i class="fas fa-tint"></i>
+                        <h4>Eau</h4>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Électricité</h4>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-road"></i>
+                        <h4>Accès facile</h4>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-border-style"></i>
+                        <h4>Borné</h4>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-file-contract"></i>
+                        <h4>Documenté</h4>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-tree"></i>
+                        <h4>Cadre vert</h4>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('property-detail').innerHTML = html;
+        } else {
+            document.getElementById('property-detail').innerHTML = '<p style="text-align: center; padding: 50px;">Terrain non trouvé</p>';
+        }
+
+        // Adaptation de la fonction pour les terrains
+        function openPaymentModal(propertyName, price) {
+            document.getElementById('modalPropertyName').textContent = propertyName;
+            document.getElementById('paymentModal').style.display = 'block';
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+            document.getElementById('paymentForm').style.display = 'block';
+            document.getElementById('whatsappConfirmation').style.display = 'none';
+        }
+
+        function handlePaymentSubmit(event) {
+            event.preventDefault();
+
+            const propertyName = document.getElementById('modalPropertyName').textContent;
+            const paymentMethod = document.querySelector('input[name="payment"]:checked')?.value || 'orange';
+            const message = document.getElementById('message')?.value || '';
+
+            const fullMessage = `*DEMANDE D'ACHAT TERRAIN*
+            
+📍 *Terrain:* ${propertyName}
+💳 *Paiement:* ${paymentMethod.toUpperCase()}
+💬 *Message:* ${message || 'Pas de message'}`;
+
+            window.open(`https://wa.me/2250710076550?text=${encodeURIComponent(fullMessage)}`, '_blank');
+
+            document.getElementById('paymentForm').style.display = 'none';
+            document.getElementById('whatsappConfirmation').style.display = 'block';
+
+            setTimeout(closePaymentModal, 3000);
+        }
+    </script>
+</body>
+
+</html>

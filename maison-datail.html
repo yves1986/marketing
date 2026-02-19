@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Détails et photos de la maison">
+    <title>Détail maison - Azania Immobilier</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Azania<span>Immobilier</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="residences.html">Résidences meublées</a></li>
+                    <li><a href="maisons.html">Maisons</a></li>
+                    <li><a href="terrains.html">Terrains</a></li>
+                    <li><a href="apporteurs.html">Apporteurs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="detail-section">
+            <div class="container">
+                <!-- Les données seront chargées dynamiquement avec JavaScript -->
+                <div id="property-detail">
+                    <!-- Le contenu sera injecté ici -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Azania Immobilier</h3>
+                    <p>Votre partenaire de confiance pour l'achat de résidences meublées, maisons et terrains en Côte
+                        d'Ivoire.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="residences.html">Résidences meublées</a></li>
+                        <li><a href="maisons.html">Maisons</a></li>
+                        <li><a href="terrains.html">Terrains</a></li>
+                        <li><a href="apporteurs.html">Apporteurs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Recevez nos dernières offres</p>
+                    <form action="#">
+                        <input type="email" placeholder="Votre email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Azania Immobilier. Tous droits réservés. | Conçu par GNENESSEMIN DJEAMIN YVES</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOUTON WHATSAPP FLOTTANT -->
+    <a href="https://wa.me/2250710076550?text=Bonjour%20%2C%20je%20souhaite%20obtenir%20des%20informations%20sur%20vos%20biens%20immobiliers%20en%20C%C3%B4te%20d%27Ivoire."
+        class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>Discutons</span>
+    </a>
+
+    <!-- MODAL DE PAIEMENT (optionnel pour les maisons si vente uniquement) -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePaymentModal()">&times;</span>
+            <h2>Acheter <span id="modalPropertyName"></span></h2>
+
+            <form id="paymentForm" onsubmit="handlePaymentSubmit(event)">
+                <div class="modal-payment-methods">
+                    <h3>Choisissez votre moyen de paiement</h3>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="orange" checked>
+                            <img src="images/logo-orange.png" alt="Orange Money">
+                            <span>Orange Money</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="mtn">
+                            <img src="images/logo-mtn.png" alt="MTN Money">
+                            <span>MTN Money</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="wave">
+                            <img src="images/logo-wave.jpeg" alt="Wave">
+                            <span>Wave</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="card">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Carte bancaire</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Votre message (optionnel)</label>
+                    <textarea id="message" rows="3" placeholder="Informations complémentaires..."></textarea>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; margin-top: 20px;">
+                    <i class="fab fa-whatsapp"></i> Envoyer la demande
+                </button>
+
+                <p class="payment-note">
+                    <i class="fas fa-shield-alt"></i> Vous serez contacté sous 24h pour finaliser l'achat.
+                </p>
+            </form>
+
+            <div class="whatsapp-confirmation" id="whatsappConfirmation" style="display: none;">
+                <p>✅ Demande envoyée ! Vous allez être redirigé vers WhatsApp.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Base de données des maisons
+        const properties = {
+            'villa-souveraine': {
+                type: 'maison',
+                nom: 'Villa Souveraine',
+                location: 'Bingerville',
+                prix: '120 000 000 FCFA',
+                prixChiffre: 120000000,
+                description: 'Villa 4 pièces, grand terrain 500m², piscine',
+                longDescription: `Magnifique villa située dans un quartier résidentiel calme de Bingerville. 
+                Elle dispose de 4 pièces spacieuses, d'un grand terrain paysager de 500m² avec piscine. 
+                Idéale pour une famille recherchant confort et tranquillité.`,
+                superficie: '500 m²',
+                surfaceHabitable: '250 m²',
+                chambres: 4,
+                sdb: 3,
+                salon: 2,
+                cuisine: 'Équipée',
+                garage: 'Oui',
+                piscine: 'Oui',
+                jardin: 'Oui',
+                climatisation: 'Oui',
+                images: [
+                    'images/maisons/souveraine/main.jpg',
+                    'images/maisons/souveraine/facade.jpg',
+                    'images/maisons/souveraine/salon.jpg',
+                    'images/maisons/souveraine/salle-manger.jpg',
+                    'images/maisons/souveraine/cuisine.jpg',
+                    'images/maisons/souveraine/chambre1.jpg',
+                    'images/maisons/souveraine/chambre2.jpg',
+                    'images/maisons/souveraine/chambre3.jpg',
+                    'images/maisons/souveraine/sdb.jpg',
+                    'images/maisons/souveraine/piscine.jpg',
+                    'images/maisons/souveraine/jardin.jpg',
+                    'images/maisons/souveraine/garage.jpg'
+                ]
+            },
+            'villa-ambassadeurs': {
+                type: 'maison',
+                nom: 'Villa des Ambassadeurs',
+                location: 'Angré, Abidjan',
+                prix: '95 000 000 FCFA',
+                prixChiffre: 95000000,
+                description: 'Maison 5 pièces, garage, jardin paysager',
+                longDescription: `Superbe maison de standing dans le quartier résidentiel d'Angré. 
+                Elle offre 5 pièces lumineuses, un garage fermé et un magnifique jardin paysager. 
+                Proche de toutes les commodités.`,
+                superficie: '400 m²',
+                surfaceHabitable: '200 m²',
+                chambres: 5,
+                sdb: 3,
+                salon: 2,
+                cuisine: 'Équipée',
+                garage: 'Oui',
+                piscine: 'Non',
+                jardin: 'Oui',
+                climatisation: 'Oui',
+                images: [
+                    'images/maisons/ambassadeurs/main.jpg',
+                    'images/maisons/ambassadeurs/facade.jpg',
+                    'images/maisons/ambassadeurs/salon.jpg',
+                    'images/maisons/ambassadeurs/cuisine.jpg',
+                    'images/maisons/ambassadeurs/chambre1.jpg',
+                    'images/maisons/ambassadeurs/chambre2.jpg',
+                    'images/maisons/ambassadeurs/chambre3.jpg',
+                    'images/maisons/ambassadeurs/sdb.jpg',
+                    'images/maisons/ambassadeurs/jardin.jpg',
+                    'images/maisons/ambassadeurs/garage.jpg'
+                ]
+            },
+            'residence-bellevue': {
+                type: 'maison',
+                nom: 'Résidence Belle Vue',
+                location: 'Grand-Bassam',
+                prix: '210 000 000 FCFA',
+                prixChiffre: 210000000,
+                description: 'Villa 6 pièces, vue mer, piscine, 3 chambres',
+                longDescription: `Exceptionnelle villa avec vue imprenable sur la mer à Grand-Bassam. 
+                Elle comprend 6 pièces dont 3 chambres, une piscine à débordement et un accès direct à la plage. 
+                Le luxe et le confort absolus.`,
+                superficie: '800 m²',
+                surfaceHabitable: '350 m²',
+                chambres: 6,
+                sdb: 4,
+                salon: 2,
+                cuisine: 'Équipée haut de gamme',
+                garage: 'Oui',
+                piscine: 'Oui',
+                jardin: 'Oui',
+                climatisation: 'Oui',
+                images: [
+                    'images/maisons/bellevue/main.jpg',
+                    'images/maisons/bellevue/facade.jpg',
+                    'images/maisons/bellevue/salon.jpg',
+                    'images/maisons/bellevue/salle-manger.jpg',
+                    'images/maisons/bellevue/cuisine.jpg',
+                    'images/maisons/bellevue/chambre1.jpg',
+                    'images/maisons/bellevue/chambre2.jpg',
+                    'images/maisons/bellevue/chambre3.jpg',
+                    'images/maisons/bellevue/sdb.jpg',
+                    'images/maisons/bellevue/piscine.jpg',
+                    'images/maisons/bellevue/terrasse.jpg',
+                    'images/maisons/bellevue/vue-mer.jpg'
+                ]
+            },
+            'villa-eden': {
+                type: 'maison',
+                nom: 'Villa Eden',
+                location: 'Cocody, Abidjan',
+                prix: '150 000 000 FCFA',
+                prixChiffre: 150000000,
+                description: 'Villa 5 pièces, 400m², piscine, jardin',
+                longDescription: `Belle villa située dans le quartier huppé de Cocody. 
+                Elle offre 5 pièces, une piscine et un jardin tropical. 
+                Proche des écoles et des centres commerciaux.`,
+                superficie: '400 m²',
+                surfaceHabitable: '280 m²',
+                chambres: 5,
+                sdb: 3,
+                salon: 2,
+                cuisine: 'Équipée',
+                garage: 'Oui',
+                piscine: 'Oui',
+                jardin: 'Oui',
+                climatisation: 'Oui',
+                images: [
+                    'images/maisons/eden/main.jpg',
+                    'images/maisons/eden/facade.jpg',
+                    'images/maisons/eden/salon.jpg',
+                    'images/maisons/eden/cuisine.jpg',
+                    'images/maisons/eden/chambre1.jpg',
+                    'images/maisons/eden/chambre2.jpg',
+                    'images/maisons/eden/chambre3.jpg',
+                    'images/maisons/eden/sdb.jpg',
+                    'images/maisons/eden/piscine.jpg',
+                    'images/maisons/eden/jardin.jpg'
+                ]
+            },
+            'maison-palmiers': {
+                type: 'maison',
+                nom: 'Maison des Palmiers',
+                location: 'Marcory',
+                prix: '85 000 000 FCFA',
+                prixChiffre: 85000000,
+                description: 'Maison 4 pièces, 300m², garage',
+                longDescription: `Charmante maison de plain-pied à Marcory. 
+                Elle dispose de 4 pièces, d'un garage et d'une petite cour. 
+                Idéale pour une petite famille.`,
+                superficie: '300 m²',
+                surfaceHabitable: '150 m²',
+                chambres: 4,
+                sdb: 2,
+                salon: 1,
+                cuisine: 'Semi-équipée',
+                garage: 'Oui',
+                piscine: 'Non',
+                jardin: 'Petit',
+                climatisation: 'Oui',
+                images: [
+                    'images/maisons/palmiers/main.jpg',
+                    'images/maisons/palmiers/facade.jpg',
+                    'images/maisons/palmiers/salon.jpg',
+                    'images/maisons/palmiers/cuisine.jpg',
+                    'images/maisons/palmiers/chambre1.jpg',
+                    'images/maisons/palmiers/chambre2.jpg',
+                    'images/maisons/palmiers/chambre3.jpg',
+                    'images/maisons/palmiers/sdb.jpg',
+                    'images/maisons/palmiers/cour.jpg',
+                    'images/maisons/palmiers/garage.jpg'
+                ]
+            },
+            'villa-bellerive': {
+                type: 'maison',
+                nom: 'Villa Belle-Rive',
+                location: 'Bingerville',
+                prix: '200 000 000 FCFA',
+                prixChiffre: 200000000,
+                description: 'Villa 6 pièces, 500m², vue lagune',
+                longDescription: `Magnifique villa avec vue imprenable sur la lagune. 
+                Elle comprend 6 pièces, une grande terrasse et un jardin paysager. 
+                Un cadre de vie exceptionnel.`,
+                superficie: '500 m²',
+                surfaceHabitable: '320 m²',
+                chambres: 6,
+                sdb: 4,
+                salon: 2,
+                cuisine: 'Équipée',
+                garage: 'Oui',
+                piscine: 'Non',
+                jardin: 'Oui',
+                climatisation: 'Oui',
+                images: [
+                    'images/maisons/bellerive/main.jpg',
+                    'images/maisons/bellerive/facade.jpg',
+                    'images/maisons/bellerive/salon.jpg',
+                    'images/maisons/bellerive/cuisine.jpg',
+                    'images/maisons/bellerive/chambre1.jpg',
+                    'images/maisons/bellerive/chambre2.jpg',
+                    'images/maisons/bellerive/chambre3.jpg',
+                    'images/maisons/bellerive/sdb.jpg',
+                    'images/maisons/bellerive/terrasse.jpg',
+                    'images/maisons/bellerive/vue-lagune.jpg',
+                    'images/maisons/bellerive/jardin.jpg'
+                ]
+            },
+            'residence-lac': {
+                type: 'maison',
+                nom: 'Résidence du Lac',
+                location: 'Grand-Bassam',
+                prix: '120 000 000 FCFA',
+                prixChiffre: 120000000,
+                description: 'Maison 4 pièces, accès plage',
+                longDescription: `Jolie maison de vacances avec accès direct à la plage. 
+                Elle offre 4 pièces et une petite cour. 
+                Parfaite pour les séjours en famille.`,
+                superficie: '300 m²',
+                surfaceHabitable: '140 m²',
+                chambres: 4,
+                sdb: 2,
+                salon: 1,
+                cuisine: 'Équipée',
+                garage: 'Non',
+                piscine: 'Non',
+                jardin: 'Petit',
+                climatisation: 'Oui',
+                images: [
+                    'images/maisons/lac/main.jpg',
+                    'images/maisons/lac/facade.jpg',
+                    'images/maisons/lac/salon.jpg',
+                    'images/maisons/lac/cuisine.jpg',
+                    'images/maisons/lac/chambre1.jpg',
+                    'images/maisons/lac/chambre2.jpg',
+                    'images/maisons/lac/chambre3.jpg',
+                    'images/maisons/lac/sdb.jpg',
+                    'images/maisons/lac/plage.jpg'
+                ]
+            },
+            'villa-azur': {
+                type: 'maison',
+                nom: 'Villa Azur',
+                location: 'Cocody',
+                prix: '175 000 000 FCFA',
+                prixChiffre: 175000000,
+                description: 'Villa 5 pièces, piscine, terrain 600m²',
+                longDescription: `Superbe villa moderne à Cocody. 
+                Elle dispose de 5 pièces, d'une piscine et d'un grand terrain de 600m². 
+                Prestations de luxe et finitions soignées.`,
+                superficie: '600 m²',
+                surfaceHabitable: '300 m²',
+                chambres: 5,
+                sdb: 4,
+                salon: 2,
+                cuisine: 'Équipée',
+                garage: 'Oui',
+                piscine: 'Oui',
+                jardin: 'Oui',
+                climatisation: 'Oui',
+                images: [
+                    'images/maisons/azur/main.jpg',
+                    'images/maisons/azur/facade.jpg',
+                    'images/maisons/azur/salon.jpg',
+                    'images/maisons/azur/cuisine.jpg',
+                    'images/maisons/azur/chambre1.jpg',
+                    'images/maisons/azur/chambre2.jpg',
+                    'images/maisons/azur/chambre3.jpg',
+                    'images/maisons/azur/sdb.jpg',
+                    'images/maisons/azur/piscine.jpg',
+                    'images/maisons/azur/jardin.jpg'
+                ]
+            },
+            'maison-tropicana': {
+                type: 'maison',
+                nom: 'Maison Tropicana',
+                location: 'Anyama',
+                prix: '65 000 000 FCFA',
+                prixChiffre: 65000000,
+                description: 'Maison 3 pièces, grand jardin',
+                longDescription: `Charmante maison à Anyama avec un grand jardin. 
+                Elle comprend 3 pièces et est idéale pour une petite famille. 
+                Calme et verdure assurés.`,
+                superficie: '400 m²',
+                surfaceHabitable: '120 m²',
+                chambres: 3,
+                sdb: 2,
+                salon: 1,
+                cuisine: 'Semi-équipée',
+                garage: 'Non',
+                piscine: 'Non',
+                jardin: 'Grand',
+                climatisation: 'Oui',
+                images: [
+                    'images/maisons/tropicana/main.jpg',
+                    'images/maisons/tropicana/facade.jpg',
+                    'images/maisons/tropicana/salon.jpg',
+                    'images/maisons/tropicana/cuisine.jpg',
+                    'images/maisons/tropicana/chambre1.jpg',
+                    'images/maisons/tropicana/chambre2.jpg',
+                    'images/maisons/tropicana/chambre3.jpg',
+                    'images/maisons/tropicana/sdb.jpg',
+                    'images/maisons/tropicana/jardin.jpg'
+                ]
+            },
+            'villa-imperiale': {
+                type: 'maison',
+                nom: 'Villa Impériale',
+                location: 'Abidjan',
+                prix: '300 000 000 FCFA',
+                prixChiffre: 300000000,
+                description: 'Villa 7 pièces, piscine, spa, jardin paysager',
+                longDescription: `Villa d'exception avec prestations de luxe. 
+                Elle comprend 7 pièces, une piscine, un spa, un jardin paysager et des finitions haut de gamme. 
+                Le summum du raffinement.`,
+                superficie: '1000 m²',
+                surfaceHabitable: '450 m²',
+                chambres: 7,
+                sdb: 5,
+                salon: 3,
+                cuisine: 'Équipée haut de gamme',
+                garage: 'Oui (2 places)',
+                piscine: 'Oui',
+                jardin: 'Paysager',
+                climatisation: 'Oui',
+                images: [
+                    'images/maisons/imperiale/main.jpg',
+                    'images/maisons/imperiale/facade.jpg',
+                    'images/maisons/imperiale/salon.jpg',
+                    'images/maisons/imperiale/salle-manger.jpg',
+                    'images/maisons/imperiale/cuisine.jpg',
+                    'images/maisons/imperiale/chambre1.jpg',
+                    'images/maisons/imperiale/chambre2.jpg',
+                    'images/maisons/imperiale/chambre3.jpg',
+                    'images/maisons/imperiale/chambre4.jpg',
+                    'images/maisons/imperiale/sdb.jpg',
+                    'images/maisons/imperiale/piscine.jpg',
+                    'images/maisons/imperiale/spa.jpg',
+                    'images/maisons/imperiale/jardin.jpg',
+                    'images/maisons/imperiale/terrasse.jpg'
+                ]
+            }
+        };
+
+        // Récupérer le nom depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const propertyName = urlParams.get('nom');
+
+        if (propertyName && properties[propertyName]) {
+            const prop = properties[propertyName];
+
+            let html = `
+                <div class="detail-header">
+                    <h1>${prop.nom}</h1>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> ${prop.location}</p>
+                </div>
+
+                <div class="detail-gallery">
+                    <img src="${prop.images[0]}" alt="${prop.nom}" class="main-image" id="mainImage" onerror="this.src='images/placeholder.jpg'">
+                    <div class="thumbnail-grid">
+            `;
+
+            // Ajouter les miniatures
+            for (let i = 1; i < prop.images.length; i++) {
+                html += `<img src="${prop.images[i]}" alt="${prop.nom}" class="thumbnail" onclick="document.getElementById('mainImage').src=this.src" onerror="this.src='images/placeholder.jpg'">`;
+            }
+
+            html += `
+                    </div>
+                </div>
+
+                <div class="detail-info">
+                    <div class="description-box">
+                        <h2>Description</h2>
+                        <p>${prop.longDescription}</p>
+                        
+                        <h2 style="margin-top: 30px;">Caractéristiques</h2>
+                        <ul class="features-list">
+                            <li><i class="fas fa-ruler-combined"></i> Terrain: ${prop.superficie}</li>
+                            <li><i class="fas fa-home"></i> Surface habitable: ${prop.surfaceHabitable}</li>
+                            <li><i class="fas fa-bed"></i> ${prop.chambres} chambres</li>
+                            <li><i class="fas fa-bath"></i> ${prop.sdb} salles de bain</li>
+                            <li><i class="fas fa-couch"></i> ${prop.salon} salons</li>
+                            <li><i class="fas fa-utensils"></i> Cuisine ${prop.cuisine}</li>
+                            <li><i class="fas fa-car"></i> Garage: ${prop.garage}</li>
+                            <li><i class="fas fa-water"></i> Piscine: ${prop.piscine}</li>
+                            <li><i class="fas fa-tree"></i> Jardin: ${prop.jardin}</li>
+                            <li><i class="fas fa-wind"></i> Climatisation: ${prop.climatisation}</li>
+                        </ul>
+                    </div>
+
+                    <div class="price-box">
+                        <div class="price">${prop.prix}</div>
+                        <button class="btn" onclick="openPaymentModal('${prop.nom}', ${prop.prixChiffre})">
+                            <i class="fas fa-shopping-cart"></i> Acheter
+                        </button>
+                        <a href="https://wa.me/2250710076550?text=Bonjour%2C%20je%20souhaite%20plus%20d%27informations%20sur%20${encodeURIComponent(prop.nom)}"
+                            class="btn" style="background: #25D366; margin-top: 10px;" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Demande d'info
+                        </a>
+                    </div>
+                </div>
+
+                <div class="amenities-grid">
+                    <div class="amenity-card">
+                        <i class="fas fa-car"></i>
+                        <h4>Garage</h4>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-tree"></i>
+                        <h4>Jardin</h4>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-water"></i>
+                        <h4>Piscine</h4>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Sécurité</h4>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-snowflake"></i>
+                        <h4>Climatisation</h4>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-sun"></i>
+                        <h4>Bien exposé</h4>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('property-detail').innerHTML = html;
+        } else {
+            document.getElementById('property-detail').innerHTML = '<p style="text-align: center; padding: 50px;">Maison non trouvée</p>';
+        }
+
+        // Adaptation de la fonction pour les maisons
+        function openPaymentModal(propertyName, price) {
+            document.getElementById('modalPropertyName').textContent = propertyName;
+            document.getElementById('paymentModal').style.display = 'block';
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+            document.getElementById('paymentForm').style.display = 'block';
+            document.getElementById('whatsappConfirmation').style.display = 'none';
+        }
+
+        function handlePaymentSubmit(event) {
+            event.preventDefault();
+
+            const propertyName = document.getElementById('modalPropertyName').textContent;
+            const message = document.getElementById('message')?.value || '';
+
+            const fullMessage = `*DEMANDE D'ACHAT*
+            
+🏠 *Propriété:* ${propertyName}
+💬 *Message:* ${message || 'Pas de message'}`;
+
+            window.open(`https://wa.me/2250710076550?text=${encodeURIComponent(fullMessage)}`, '_blank');
+
+            document.getElementById('paymentForm').style.display = 'none';
+            document.getElementById('whatsappConfirmation').style.display = 'block';
+
+            setTimeout(closePaymentModal, 3000);
+        }
+    </script>
+</body>
+
+</html>

@@ -77,7 +77,7 @@ function handlePaymentSubmit(event) {
     const totalPrice = document.getElementById('totalPrice').textContent;
     const paymentMethod = document.querySelector('input[name="payment"]:checked')?.value || 'orange';
 
-    // Message WhatsApp - REMPLACEZ 2250123456789 par votre numéro
+    // Message WhatsApp avec le bon numéro
     const message = `*NOUVELLE RÉSERVATION*
     
 🏠 *Propriété:* ${propertyName}
@@ -87,8 +87,8 @@ function handlePaymentSubmit(event) {
 💰 *Total:* ${totalPrice} FCFA
 💳 *Paiement:* ${paymentMethod.toUpperCase()}`;
 
-    // Redirection WhatsApp
-    window.open(`https://wa.me/2250123456789?text=${encodeURIComponent(message)}`, '_blank');
+    // Redirection WhatsApp avec le numéro corrigé
+    window.open(`https://wa.me/2250710076550?text=${encodeURIComponent(message)}`, '_blank');
 
     // Afficher confirmation
     document.getElementById('paymentForm').style.display = 'none';
