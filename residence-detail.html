@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Détails et photos de la résidence">
+    <title>Détail résidence - Azania Immobilier</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Styles spécifiques à la page détail */
+        .detail-section {
+            padding: 60px 0;
+            margin-top: 80px;
+        }
+
+        .detail-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .detail-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .detail-header .location {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .detail-gallery {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 3px solid transparent;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-color);
+        }
+
+        .detail-info {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .description-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .description-box h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 10px;
+        }
+
+        .features-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features-list i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .price-box {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .price-box .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .price-box .price span {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .amenity-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .amenity-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .similar-properties {
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .detail-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .thumbnail-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .detail-info {
+                grid-template-columns: 1fr;
+            }
+
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+
+            .amenities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .thumbnail-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .amenities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Azania<span>Immobilier</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="residences.html">Résidences meublées</a></li>
+                    <li><a href="maisons.html">Maisons</a></li>
+                    <li><a href="terrains.html">Terrains</a></li>
+                    <li><a href="apporteurs.html">Apporteurs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="detail-section">
+            <div class="container">
+                <!-- Les données seront chargées dynamiquement avec JavaScript -->
+                <div id="property-detail">
+                    <!-- Le contenu sera injecté ici -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Azania Immobilier</h3>
+                    <p>Votre partenaire de confiance pour l'achat de résidences meublées, maisons et terrains en Côte
+                        d'Ivoire.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="residences.html">Résidences meublées</a></li>
+                        <li><a href="maisons.html">Maisons</a></li>
+                        <li><a href="terrains.html">Terrains</a></li>
+                        <li><a href="apporteurs.html">Apporteurs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Recevez nos dernières offres</p>
+                    <form action="#">
+                        <input type="email" placeholder="Votre email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Azania Immobilier. Tous droits réservés. | Conçu par GNENESSEMIN DJEAMIN YVES</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOUTON WHATSAPP FLOTTANT -->
+    <a href="https://wa.me/2250710076550?text=Bonjour%20%2C%20je%20souhaite%20obtenir%20des%20informations%20sur%20vos%20biens%20immobiliers%20en%20C%C3%B4te%20d%27Ivoire."
+        class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>Discutons</span>
+    </a>
+
+    <script>
+        // Base de données des propriétés
+        const properties = {
+            'villa-oceane': {
+                type: 'residence',
+                nom: 'Villa Océane',
+                location: 'Cocody, Abidjan',
+                prix: '350 000 FCFA/nuit',
+                description: 'Superbe villa avec piscine et jardin paysager, entièrement meublée et équipée.',
+                longDescription: `Située dans le quartier huppé de Cocody, cette villa de standing vous offre tout le confort moderne. 
+                Avec ses 5 pièces lumineuses, sa piscine à débordement et son jardin tropical, elle est idéale pour des séjours de luxe.`,
+                superficie: '450 m²',
+                chambres: 5,
+                sdb: 4,
+                salon: 2,
+                cuisine: 'Équipée',
+                parking: 'Oui',
+                piscine: 'Oui',
+                climatisation: 'Oui',
+                wifi: 'Oui',
+                images: [
+                    'images/residences/oceane/main.jpg',
+                    'images/residences/oceane/salon.jpg',
+                    'images/residences/oceane/chambre1.jpg',
+                    'images/residences/oceane/chambre2.jpg',
+                    'images/residences/oceane/cuisine.jpg',
+                    'images/residences/oceane/sdb.jpg',
+                    'images/residences/oceane/piscine.jpg',
+                    'images/residences/oceane/jardin.jpg',
+                    'images/residences/oceane/terrasse.jpg',
+                    'images/residences/oceane/nuit.jpg'
+                ]
+            },
+            // Ajoutez les autres propriétés ici
+        };
+
+        // Récupérer le nom depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const propertyName = urlParams.get('nom');
+
+        if (propertyName && properties[propertyName]) {
+            const prop = properties[propertyName];
+
+            let html = `
+                <div class="detail-header">
+                    <h1>${prop.nom}</h1>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> ${prop.location}</p>
+                </div>
+
+                <div class="detail-gallery">
+                    <img src="${prop.images[0]}" alt="${prop.nom}" class="main-image" id="mainImage">
+                    <div class="thumbnail-grid">
+            `;
+
+            // Ajouter les miniatures
+            for (let i = 1; i < prop.images.length; i++) {
+                html += `<img src="${prop.images[i]}" alt="${prop.nom}" class="thumbnail" onclick="document.getElementById('mainImage').src=this.src">`;
+            }
+
+            html += `
+                    </div>
+                </div>
+
+                <div class="detail-info">
+                    <div class="description-box">
+                        <h2>Description</h2>
+                        <p>${prop.longDescription}</p>
+                        
+                        <h2 style="margin-top: 30px;">Caractéristiques</h2>
+                        <ul class="features-list">
+                            <li><i class="fas fa-ruler-combined"></i> Superficie: ${prop.superficie}</li>
+                            <li><i class="fas fa-bed"></i> ${prop.chambres} chambres</li>
+                            <li><i class="fas fa-bath"></i> ${prop.sdb} salles de bain</li>
+                            <li><i class="fas fa-couch"></i> ${prop.salon} salons</li>
+                            <li><i class="fas fa-utensils"></i> Cuisine ${prop.cuisine}</li>
+                            <li><i class="fas fa-car"></i> Parking: ${prop.parking}</li>
+                            <li><i class="fas fa-water"></i> Piscine: ${prop.piscine}</li>
+                            <li><i class="fas fa-wind"></i> Climatisation: ${prop.climatisation}</li>
+                            <li><i class="fas fa-wifi"></i> Wifi: ${prop.wifi}</li>
+                        </ul>
+                    </div>
+
+                    <div class="price-box">
+                        <div class="price">${prop.prix}</div>
+                        <button class="btn" onclick="openPaymentModal('${prop.nom}', ${prop.prix.replace(/[^0-9]/g, '')})">
+                            <i class="fas fa-calendar-check"></i> Réserver maintenant
+                        </button>
+                        <a href="https://wa.me/2250710076550?text=Bonjour%2C%20je%20souhaite%20plus%20d%27informations%20sur%20${prop.nom}"
+                            class="btn" style="background: #25D366; margin-top: 10px;" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Demande d'info
+                        </a>
+                    </div>
+                </div>
+
+                <div class="amenities-grid">
+                    <div class="amenity-card">
+                        <i class="fas fa-swimming-pool"></i>
+                        <h4>Piscine</h4>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-wifi"></i>
+                        <h4>Wifi haut débit</h4>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-tv"></i>
+                        <h4>Télévision</h4>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-snowflake"></i>
+                        <h4>Climatisation</h4>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Sécurité 24/7</h4>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-parking"></i>
+                        <h4>Parking privé</h4>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('property-detail').innerHTML = html;
+        }
+
+        // Inclure les fonctions du modal
+        function openPaymentModal(nom, prix) {
+            // Votre fonction existante
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
