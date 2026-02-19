@@ -10,182 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Styles spécifiques à la page détail */
-        .detail-section {
-            padding: 60px 0;
-            margin-top: 80px;
-        }
-
-        .detail-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .detail-header h1 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .detail-header .location {
-            font-size: 1.2rem;
-            color: #666;
-        }
-
-        .detail-gallery {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .main-image {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .thumbnail-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-
-        .thumbnail {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition);
-            border: 3px solid transparent;
-        }
-
-        .thumbnail:hover {
-            transform: scale(1.05);
-            border-color: var(--primary-color);
-        }
-
-        .detail-info {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .description-box {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .description-box h2 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--primary-light);
-            padding-bottom: 10px;
-        }
-
-        .features-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .features-list li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .features-list i {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-        }
-
-        .price-box {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-
-        .price-box .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .price-box .price span {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        .amenities-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .amenity-card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-
-        .amenity-card i {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .similar-properties {
-            margin-top: 60px;
-        }
-
-        @media (max-width: 768px) {
-            .detail-gallery {
-                grid-template-columns: 1fr;
-            }
-
-            .thumbnail-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-
-            .detail-info {
-                grid-template-columns: 1fr;
-            }
-
-            .features-list {
-                grid-template-columns: 1fr;
-            }
-
-            .amenities-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .thumbnail-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .amenities-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -262,17 +86,89 @@
         <span>Discutons</span>
     </a>
 
+    <!-- MODAL DE PAIEMENT -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePaymentModal()">&times;</span>
+            <h2>Réserver <span id="modalPropertyName"></span></h2>
+            <form id="paymentForm" onsubmit="handlePaymentSubmit(event)">
+                <div class="modal-dates">
+                    <div class="form-group">
+                        <label>Date d'arrivée</label>
+                        <input type="date" id="checkin" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Date de départ</label>
+                        <input type="date" id="checkout" required>
+                    </div>
+                </div>
+                <div class="modal-guests">
+                    <div class="form-group">
+                        <label>Nombre de personnes</label>
+                        <select id="guests">
+                            <option value="1">1 personne</option>
+                            <option value="2">2 personnes</option>
+                            <option value="3">3 personnes</option>
+                            <option value="4">4 personnes</option>
+                            <option value="5">5+ personnes</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-price-breakdown">
+                    <h3>Détail du prix</h3>
+                    <p><span id="pricePerNight">0</span> FCFA x <span id="numberOfNights">1</span> nuit(s)</p>
+                    <p class="total-price">Total: <span id="totalPrice">0</span> FCFA</p>
+                </div>
+                <div class="modal-payment-methods">
+                    <h3>Choisissez votre moyen de paiement</h3>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="orange" checked>
+                            <img src="images/logo-orange.png" alt="Orange Money">
+                            <span>Orange Money</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="mtn">
+                            <img src="images/logo-mtn.png" alt="MTN Money">
+                            <span>MTN Money</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="wave">
+                            <img src="images/logo-wave.jpeg" alt="Wave">
+                            <span>Wave</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="card">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Carte bancaire</span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 20px;">
+                    <i class="fas fa-lock"></i> Payer maintenant
+                </button>
+                <p class="payment-note">
+                    <i class="fas fa-shield-alt"></i> Paiement sécurisé. Vous recevrez une confirmation par WhatsApp.
+                </p>
+            </form>
+            <div class="whatsapp-confirmation" id="whatsappConfirmation" style="display: none;">
+                <p>✅ Demande envoyée ! Vous allez être redirigé vers WhatsApp pour confirmer.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
     <script>
-        // Base de données des propriétés
+        // Base de données des résidences (10 résidences)
         const properties = {
             'villa-oceane': {
                 type: 'residence',
                 nom: 'Villa Océane',
                 location: 'Cocody, Abidjan',
                 prix: '350 000 FCFA/nuit',
+                prixChiffre: 350000,
                 description: 'Superbe villa avec piscine et jardin paysager, entièrement meublée et équipée.',
-                longDescription: `Située dans le quartier huppé de Cocody, cette villa de standing vous offre tout le confort moderne. 
-                Avec ses 5 pièces lumineuses, sa piscine à débordement et son jardin tropical, elle est idéale pour des séjours de luxe.`,
+                longDescription: `Située dans le quartier huppé de Cocody, cette villa de standing vous offre tout le confort moderne. Avec ses 5 pièces lumineuses, sa piscine à débordement et son jardin tropical, elle est idéale pour des séjours de luxe.`,
                 superficie: '450 m²',
                 chambres: 5,
                 sdb: 4,
@@ -295,7 +191,252 @@
                     'images/residences/oceane/nuit.jpg'
                 ]
             },
-            // Ajoutez les autres propriétés ici
+            'residence-palmiers': {
+                type: 'residence',
+                nom: 'Résidence les Palmiers',
+                location: 'Marcory, Abidjan',
+                prix: '85 000 FCFA/nuit',
+                prixChiffre: 85000,
+                description: 'Appartement 3 pièces, vue mer, meublé design',
+                longDescription: `Appartement moderne avec vue imprenable sur la mer. Entièrement meublé avec des équipements de qualité.`,
+                superficie: '120 m²',
+                chambres: 2,
+                sdb: 2,
+                salon: 1,
+                cuisine: 'Équipée',
+                parking: 'Oui',
+                piscine: 'Non',
+                climatisation: 'Oui',
+                wifi: 'Oui',
+                images: [
+                    'images/residences/palmiers/main.jpg',
+                    'images/residences/palmiers/salon.jpg',
+                    'images/residences/palmiers/chambre1.jpg',
+                    'images/residences/palmiers/chambre2.jpg',
+                    'images/residences/palmiers/cuisine.jpg',
+                    'images/residences/palmiers/sdb.jpg',
+                    'images/residences/palmiers/vue.jpg',
+                    'images/residences/palmiers/balcon.jpg'
+                ]
+            },
+            'jardins-ebene': {
+                type: 'residence',
+                nom: 'Les Jardins d\'Ébène',
+                location: 'Plateau, Abidjan',
+                prix: '45 000 FCFA/nuit',
+                prixChiffre: 45000,
+                description: 'Studio 2 pièces, centre-ville, meublé haut standing',
+                longDescription: `Studio élégant situé en plein cœur du Plateau. Idéal pour les professionnels en déplacement.`,
+                superficie: '60 m²',
+                chambres: 1,
+                sdb: 1,
+                salon: 1,
+                cuisine: 'Équipée',
+                parking: 'Non',
+                piscine: 'Non',
+                climatisation: 'Oui',
+                wifi: 'Oui',
+                images: [
+                    'images/residences/ebene/main.jpg',
+                    'images/residences/ebene/salon.jpg',
+                    'images/residences/ebene/chambre.jpg',
+                    'images/residences/ebene/cuisine.jpg',
+                    'images/residences/ebene/sdb.jpg',
+                    'images/residences/ebene/vue.jpg'
+                ]
+            },
+            'residence-azuria': {
+                type: 'residence',
+                nom: 'Résidence Azuria',
+                location: 'Cocody, Angré',
+                prix: '75 000 FCFA/nuit',
+                prixChiffre: 75000,
+                description: 'Appartement 2 pièces, meublé haut standing',
+                longDescription: `Appartement moderne et spacieux dans le quartier animé d'Angré. Idéal pour les familles.`,
+                superficie: '80 m²',
+                chambres: 2,
+                sdb: 1,
+                salon: 1,
+                cuisine: 'Équipée',
+                parking: 'Oui',
+                piscine: 'Non',
+                climatisation: 'Oui',
+                wifi: 'Oui',
+                images: [
+                    'images/residences/azuria/main.jpg',
+                    'images/residences/azuria/salon.jpg',
+                    'images/residences/azuria/chambre1.jpg',
+                    'images/residences/azuria/chambre2.jpg',
+                    'images/residences/azuria/cuisine.jpg',
+                    'images/residences/azuria/sdb.jpg'
+                ]
+            },
+            'villa-krystel': {
+                type: 'residence',
+                nom: 'Villa Krystel',
+                location: 'Marcory, Zone 4',
+                prix: '120 000 FCFA/nuit',
+                prixChiffre: 120000,
+                description: 'Villa 4 pièces avec piscine, jardin',
+                longDescription: `Magnifique villa avec piscine dans le quartier résidentiel de la Zone 4. Parfaite pour des séjours en famille.`,
+                superficie: '300 m²',
+                chambres: 4,
+                sdb: 3,
+                salon: 2,
+                cuisine: 'Équipée',
+                parking: 'Oui',
+                piscine: 'Oui',
+                climatisation: 'Oui',
+                wifi: 'Oui',
+                images: [
+                    'images/residences/krystel/main.jpg',
+                    'images/residences/krystel/salon.jpg',
+                    'images/residences/krystel/chambre1.jpg',
+                    'images/residences/krystel/chambre2.jpg',
+                    'images/residences/krystel/chambre3.jpg',
+                    'images/residences/krystel/cuisine.jpg',
+                    'images/residences/krystel/sdb.jpg',
+                    'images/residences/krystel/piscine.jpg',
+                    'images/residences/krystel/jardin.jpg'
+                ]
+            },
+            'appartement-bellevue': {
+                type: 'residence',
+                nom: 'Appartement Belle Vue',
+                location: 'Plateau, Abidjan',
+                prix: '95 000 FCFA/nuit',
+                prixChiffre: 95000,
+                description: 'Appartement 3 pièces, vue panoramique',
+                longDescription: `Superbe appartement avec vue panoramique sur la lagune. Prestations haut de gamme.`,
+                superficie: '150 m²',
+                chambres: 3,
+                sdb: 2,
+                salon: 1,
+                cuisine: 'Équipée',
+                parking: 'Oui',
+                piscine: 'Non',
+                climatisation: 'Oui',
+                wifi: 'Oui',
+                images: [
+                    'images/residences/bellevue/main.jpg',
+                    'images/residences/bellevue/salon.jpg',
+                    'images/residences/bellevue/chambre1.jpg',
+                    'images/residences/bellevue/chambre2.jpg',
+                    'images/residences/bellevue/chambre3.jpg',
+                    'images/residences/bellevue/cuisine.jpg',
+                    'images/residences/bellevue/sdb.jpg',
+                    'images/residences/bellevue/vue.jpg'
+                ]
+            },
+            'villa-orchidees': {
+                type: 'residence',
+                nom: 'Villa des Orchidées',
+                location: 'Bingerville',
+                prix: '150 000 FCFA/nuit',
+                prixChiffre: 150000,
+                description: 'Villa 5 pièces, grand jardin, piscine',
+                longDescription: `Villa d'exception avec grand jardin paysager et piscine. Calme et verdure assurés.`,
+                superficie: '500 m²',
+                chambres: 5,
+                sdb: 4,
+                salon: 2,
+                cuisine: 'Équipée',
+                parking: 'Oui',
+                piscine: 'Oui',
+                climatisation: 'Oui',
+                wifi: 'Oui',
+                images: [
+                    'images/residences/orchidees/main.jpg',
+                    'images/residences/orchidees/salon.jpg',
+                    'images/residences/orchidees/chambre1.jpg',
+                    'images/residences/orchidees/chambre2.jpg',
+                    'images/residences/orchidees/chambre3.jpg',
+                    'images/residences/orchidees/cuisine.jpg',
+                    'images/residences/orchidees/sdb.jpg',
+                    'images/residences/orchidees/piscine.jpg',
+                    'images/residences/orchidees/jardin.jpg'
+                ]
+            },
+            'residence-harmonie': {
+                type: 'residence',
+                nom: 'Résidence Harmonie',
+                location: 'Cocody, Riviera',
+                prix: '65 000 FCFA/nuit',
+                prixChiffre: 65000,
+                description: 'Studio 2 pièces, meublé moderne',
+                longDescription: `Studio moderne et fonctionnel dans la résidence Harmonie. Idéal pour courts séjours.`,
+                superficie: '50 m²',
+                chambres: 1,
+                sdb: 1,
+                salon: 1,
+                cuisine: 'Équipée',
+                parking: 'Non',
+                piscine: 'Non',
+                climatisation: 'Oui',
+                wifi: 'Oui',
+                images: [
+                    'images/residences/harmonie/main.jpg',
+                    'images/residences/harmonie/salon.jpg',
+                    'images/residences/harmonie/chambre.jpg',
+                    'images/residences/harmonie/cuisine.jpg',
+                    'images/residences/harmonie/sdb.jpg'
+                ]
+            },
+            'villa-oceane2': {
+                type: 'residence',
+                nom: 'Villa Océane 2',
+                location: 'Grand-Bassam',
+                prix: '180 000 FCFA/nuit',
+                prixChiffre: 180000,
+                description: 'Villa 6 pièces, vue mer, plage privée',
+                longDescription: `Superbe villa de standing avec accès direct à la plage. Vue mer imprenable.`,
+                superficie: '600 m²',
+                chambres: 6,
+                sdb: 5,
+                salon: 2,
+                cuisine: 'Équipée haut de gamme',
+                parking: 'Oui',
+                piscine: 'Oui',
+                climatisation: 'Oui',
+                wifi: 'Oui',
+                images: [
+                    'images/residences/oceane2/main.jpg',
+                    'images/residences/oceane2/salon.jpg',
+                    'images/residences/oceane2/chambre1.jpg',
+                    'images/residences/oceane2/chambre2.jpg',
+                    'images/residences/oceane2/chambre3.jpg',
+                    'images/residences/oceane2/cuisine.jpg',
+                    'images/residences/oceane2/sdb.jpg',
+                    'images/residences/oceane2/piscine.jpg',
+                    'images/residences/oceane2/plage.jpg',
+                    'images/residences/oceane2/vue-mer.jpg'
+                ]
+            },
+            'residence-arts': {
+                type: 'residence',
+                nom: 'Résidence des Arts',
+                location: 'Treichville',
+                prix: '45 000 FCFA/nuit',
+                prixChiffre: 45000,
+                description: 'Appartement 1 pièce, meublé design',
+                longDescription: `Appartement design et fonctionnel au cœur de Treichville. Idéal pour les déplacements professionnels.`,
+                superficie: '45 m²',
+                chambres: 1,
+                sdb: 1,
+                salon: 1,
+                cuisine: 'Équipée',
+                parking: 'Non',
+                piscine: 'Non',
+                climatisation: 'Oui',
+                wifi: 'Oui',
+                images: [
+                    'images/residences/arts/main.jpg',
+                    'images/residences/arts/salon.jpg',
+                    'images/residences/arts/chambre.jpg',
+                    'images/residences/arts/cuisine.jpg',
+                    'images/residences/arts/sdb.jpg'
+                ]
+            }
         };
 
         // Récupérer le nom depuis l'URL
@@ -312,13 +453,12 @@
                 </div>
 
                 <div class="detail-gallery">
-                    <img src="${prop.images[0]}" alt="${prop.nom}" class="main-image" id="mainImage">
+                    <img src="${prop.images[0]}" alt="${prop.nom}" class="main-image" id="mainImage" onerror="this.src='images/placeholder.jpg'">
                     <div class="thumbnail-grid">
             `;
 
-            // Ajouter les miniatures
             for (let i = 1; i < prop.images.length; i++) {
-                html += `<img src="${prop.images[i]}" alt="${prop.nom}" class="thumbnail" onclick="document.getElementById('mainImage').src=this.src">`;
+                html += `<img src="${prop.images[i]}" alt="${prop.nom}" class="thumbnail" onclick="document.getElementById('mainImage').src=this.src" onerror="this.src='images/placeholder.jpg'">`;
             }
 
             html += `
@@ -346,10 +486,10 @@
 
                     <div class="price-box">
                         <div class="price">${prop.prix}</div>
-                        <button class="btn" onclick="openPaymentModal('${prop.nom}', ${prop.prix.replace(/[^0-9]/g, '')})">
+                        <button class="btn" onclick="openPaymentModal('${prop.nom}', ${prop.prixChiffre})">
                             <i class="fas fa-calendar-check"></i> Réserver maintenant
                         </button>
-                        <a href="https://wa.me/2250710076550?text=Bonjour%2C%20je%20souhaite%20plus%20d%27informations%20sur%20${prop.nom}"
+                        <a href="https://wa.me/2250710076550?text=Bonjour%2C%20je%20souhaite%20plus%20d%27informations%20sur%20${encodeURIComponent(prop.nom)}"
                             class="btn" style="background: #25D366; margin-top: 10px;" target="_blank">
                             <i class="fab fa-whatsapp"></i> Demande d'info
                         </a>
@@ -385,14 +525,10 @@
             `;
 
             document.getElementById('property-detail').innerHTML = html;
-        }
-
-        // Inclure les fonctions du modal
-        function openPaymentModal(nom, prix) {
-            // Votre fonction existante
+        } else {
+            document.getElementById('property-detail').innerHTML = '<p style="text-align: center; padding: 50px;">Résidence non trouvée</p>';
         }
     </script>
-    <script src="script.js"></script>
 </body>
 
 </html>
